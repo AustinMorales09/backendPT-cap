@@ -27,6 +27,13 @@ app.use(express.json());
 // app.use('/sports', sportsRouter)
    app.use('/attractions', attractionsRouter) 
 
+
+   if (process.env.NODE_ENV === "production"){
+      app.use(express.static('/build'))
+      app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '/build'))
+      })
+    };
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
