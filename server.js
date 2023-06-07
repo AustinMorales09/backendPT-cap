@@ -28,9 +28,7 @@ app.use(express.json());
    app.use('/attractions', attractionsRouter) 
 
 
-   if (process.env.NODE_ENV === "production"){
-      app.use(express.static('/build'))
-    };
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
